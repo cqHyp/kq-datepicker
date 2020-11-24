@@ -1,0 +1,214 @@
+.kq-datepicker {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.item-hover {
+    transition-duration: .3s;
+}
+
+.item-hover:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.layui-laydate-footer span:hover {
+    color: #1890FF;
+}
+
+.layui-laydate-footer span[lay-type=date] {
+    color: #1890FF;
+}
+
+.layui-laydate-content td.laydate-selected {
+    background-color: #E6F7FF;
+}
+
+.laydate-theme-molv .layui-laydate-header {
+    background-color: white!important;
+    border-bottom: 1px solid rgba(237,237,237,1);
+    padding: 10px 30px 5px;
+    box-sizing: border-box;
+}
+
+.laydate-theme-molv .layui-laydate-header i, .laydate-theme-molv .layui-laydate-header span {
+    color: rgba(0,0,0,0.85);
+}
+
+.laydate-theme-molv .layui-laydate-main {
+    width: 204px;
+}
+
+.laydate-theme-molv .layui-laydate-header i:hover, .laydate-theme-molv .layui-laydate-header span:hover {
+    color: rgba(0,0,0,0.45);
+}
+
+.laydate-theme-molv {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.layui-laydate-header i {
+    font-size: 14px;
+}
+
+.laydate-theme-molv.layui-laydate-range {
+    width: 408px;
+}
+
+.laydate-month-list>li {
+    border-radius: 2px;
+}
+
+.laydate-footer-btns span {
+    font-size: 12px;
+    padding: 4px 14px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: auto;
+    line-height: normal;
+}
+
+.laydate-btns-confirm {
+    background-color: #1890FF!important;
+    color: #ffffff!important;
+    border: 1px solid #1890FF!important;
+}
+
+.laydate-btns-now, .laydate-btns-clear {
+    margin-right: 12px!important;
+    border: 1px solid #1890FF!important;
+    color: #1890FF;
+}
+
+.layui-laydate .laydate-disabled, .layui-laydate .laydate-disabled:hover {
+    border: 1px solid #C9C9C9!important;
+}
+
+.laydate-btns-time .laydate-disabled {
+    border: none!important;
+}
+
+.layui-laydate-content .laydate-day-next, .layui-laydate-content .laydate-day-prev {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.layui-laydate-range .laydate-main-list-0 .laydate-set-ym {
+    padding-left: 30px;
+}
+
+.layui-laydate-range .laydate-main-list-1 .laydate-set-ym {
+    padding-right: 30px;
+}
+
+.kq-time-picker-input {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #333;
+    margin: 0 5px;
+    font-size: 12px;
+}
+
+#timeSelectGroup {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.kq-time-select-item {
+    cursor: pointer;
+    margin: 2px;
+}
+
+.kq-time-select-item:hover {
+    background: #1890FF;
+    color: #fff;
+}
+
+.kq-datepicker__month {
+    width: 34px;
+    height: 25px;
+    font-size: 12px;
+    color: rgba(0,0,0,0.65);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition-duration: .3s;
+    border-radius: 2px;
+}
+
+.kq-datepicker__month:hover {
+    background: #eaeaea;
+}
+
+.kq-datepicker__month-active {
+    background: #1890FF!important;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.picker-button-default {
+    background-color: #fff;
+    white-space: nowrap;
+    vertical-align: top;
+    font-size: 12px;
+    padding: 4px 14px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: auto;
+    line-height: normal;
+    margin-right: 12px!important;
+    border: 1px solid #1890FF!important;
+    color: #1890FF;
+    cursor: pointer;
+}
+
+.picker-button-primary {
+    white-space: nowrap;
+    vertical-align: top;
+    font-size: 12px;
+    padding: 4px 14px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: auto;
+    line-height: normal;
+    background-color: #1890FF!important;
+    color: #ffffff!important;
+    border: 1px solid #1890FF!important;
+    cursor: pointer;
+}
+
+.picker_footer__inner {
+    padding: 4px 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+}
+
+.picker-range-header {
+    padding: 8px 16px;
+    box-sizing: border-box;
+    color: #333333;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+}
