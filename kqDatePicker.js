@@ -77,7 +77,7 @@
         if (this.dataset.type) {
           dataType = this.dataset.type;
           let otList = this.dataset.type.split(",");
-          defaultDateList = allDateList.filter(item => {
+          defaultDateList = allDateList.filter(function(item) {
             return otList.indexOf(item.ot) > -1;
           });
         } else {
@@ -104,7 +104,7 @@
         initBootstrapDatepicker();
         if (dataType.split(",").length == 1) {
           let t = dataType.split(",")[0];
-          let dId = allDateList.filter(item => {
+          let dId = allDateList.filter(function(item) {
             return item.ot == t
           })[0].id;
           if (t == "y" || t == "d") {
@@ -135,7 +135,7 @@
 
   function initContent() {
     let _list = [];
-    defaultDateList.forEach(item => {
+    defaultDateList.forEach(function(item) {
       let _it = "";
       if (item.type == 1) {
         _it = "<div id='date_item_" + item.id + "' class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;'><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
@@ -151,7 +151,7 @@
   }
 
   function _bindItemClick() {
-    defaultDateList.forEach(item => {
+    defaultDateList.forEach(function(item) {
       if (item.type == 1) {
         $("#date_item_" + item.id).click(function () {
           handleOpen(item.id)
@@ -177,12 +177,12 @@
   }
 
   function handleOpen(id) {
-    let childList = defaultDateList.filter(item => {
+    let childList = defaultDateList.filter(function(item) {
       return item.id == id
     })[0]._child;
     let _child = [];
     let _bindButtonList = [];
-    childList.forEach(item => {
+    childList.forEach(function(item) {
       let _it = "";
       if (item.type == 3) {
         let self_id = _self_id + "_date_item_" + item.id;
@@ -207,7 +207,7 @@
     let _header = "选择日期" + "<i id='dateBack' class=\"layui-icon layui-icon-left\" style='position: absolute;left: 5px;top: 50%;margin-top: -7px;color: #999;cursor: pointer;display: none;'></i><i id='dateClose' class=\"layui-icon layui-icon-close\" style='position: absolute;right: 5px;top: 50%;margin-top: -7px;color: #999;cursor: pointer;'></i>";
     $("#picker__header").html(_header);
     let _list = [];
-    defaultDateList.forEach(item => {
+    defaultDateList.forEach(function(item) {
       let _it = "";
       if (item.type == 1) {
         _it = "<div id='date_item_" + item.id + "' class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;'><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
@@ -221,7 +221,7 @@
       _list.push(_it);
     });
     $("#date_content").html(_list.join(""));
-    defaultDateList.forEach(item => {
+    defaultDateList.forEach(function(item) {
       if (item.type == 1) {
         $("#date_item_" + item.id).click(function () {
           handleOpen(item.id)
@@ -234,7 +234,7 @@
   }
 
   function _bindDateSelect(_bindButtonList) {
-    _bindButtonList.forEach(item => {
+    _bindButtonList.forEach(function(item) {
       let _id = item.split("_").pop();
       $("#" + item).click(function () {
         for (let i = 0; i < $("#date_content>div>i").length; i++) {
@@ -282,9 +282,9 @@
 
   function dateSelect(_id) {
     let parentId = _id.split("")[0];
-    let objDate = defaultDateList.filter(item => {
+    let objDate = defaultDateList.filter(function(item) {
       return item.id == parentId;
-    })[0]._child.filter(item => {
+    })[0]._child.filter(function(item) {
       return item.id == _id;
     })[0];
     if (typeof objDate.day == "number") {
@@ -358,7 +358,7 @@
               endDate.minutes = endTimeMin;
               let valueArr = value.split(" ~ ");
               value = (valueArr[0].split(" ")[0] + " " + ((startTimeHour < 10 ? "0" + startTimeHour : startTimeHour) + ":" + (startTimeMin < 10 ? "0" + startTimeMin : startTimeMin))) + " ~ " + (valueArr[1].split(" ")[0] + " " + ((endTimeHour < 10 ? "0" + endTimeHour : endTimeHour) + ":" + (endTimeMin < 10 ? "0" + endTimeMin : endTimeMin)))
-              setTimeout(() => {
+              setTimeout(function () {
                 $("#" + _self_id.split("__")[0]).val(value);
                 setSearchValue(value);
                 $("#" + _self_id).remove();
@@ -367,7 +367,7 @@
             }
           },
           ready: function (date) {
-            setTimeout(() => {
+            setTimeout(function() {
               $(".laydate-btns-time").hide();
               $(".laydate-main-list-0 .layui-laydate-content").append("<div id='startTimeGroup' style='display: inline-flex;justify-content: flex-start;align-items: center;margin-right: 12px;'><div style='font-size: 12px;' class=''>时间</div><div id='startTime_Hour' class='kq-time-picker-input'>00</div>:<div id='startTime_Min' class='kq-time-picker-input'>00</div></div>");
               $(".laydate-main-list-1 .layui-laydate-content").append("<div id='endTimeGroup' style='display: inline-flex;justify-content: flex-start;align-items: center;margin-right: 12px;'><div style='font-size: 12px;' class=''>时间</div><div id='endTime_Hour' class='kq-time-picker-input'>00</div>:<div id='endTime_Min' class='kq-time-picker-input'>00</div></div>");
