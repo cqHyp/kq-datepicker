@@ -212,3 +212,8 @@
     align-items: center;
     border-bottom: 1px solid rgba(0,0,0,0.09);
 }
+
+.hour-disabled {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: not-allowed;
+}

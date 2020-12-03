@@ -23,7 +23,7 @@
 
         .mr-r-10 {
             margin-right: 10px;
-            min-width: 150px;
+            min-width: 300px;
         }
 
         .kq-button {
@@ -34,10 +34,16 @@
 
 <body>
     <div class="flex justify-start align-center mr-b-10">
-        <div class="mr-r-10">日、月、年、自定义</div>
+        <div class="mr-r-10">日、月、年、自定义(yyyy-MM-dd)</div>
         <input class="kq-input mr-r-10" style="width: 200px;" data-type="d,m,y,c" id="picker" />
         <button class="kq-button" onclick="showValue('picker')">取值</button>
         <span id="pickerValue"></span>
+    </div>
+    <div class="flex justify-start align-center mr-b-10">
+        <div class="mr-r-10">日、月、年、自定义(yyyy-MM-dd HH:mm)</div>
+        <input class="kq-input mr-r-10" style="width: 200px;" data-type="d,m,y,c" id="ddd" />
+        <button class="kq-button" onclick="showValue('ddd')">取值</button>
+        <span id="dddValue"></span>
     </div>
     <div class="flex justify-start align-center mr-b-10">
         <div class="mr-r-10">月</div>
@@ -62,7 +68,15 @@
         new datePickerModule({
             container: "picker",
             startId: "sTime",
-            endId: "eTime"
+            endId: "eTime",
+            dateFormat: "yyyy-MM-dd"
+        })
+
+        new datePickerModule({
+            container: "ddd",
+            startId: "sTime",
+            endId: "eTime",
+            dateFormat: "yyyy-MM-dd HH:mm"
         })
 
         new datePickerModule({

@@ -12,7 +12,7 @@
   const allDateList = [
     {
       id: 1, label: "按天", type: 1, ot: "d",
-      _child: [{ id: 11, label: "昨天", type: 3, day: -1 }, { id: 12, label: "前7天", type: 3, day: -7 }, { id: 13, label: "前30天", type: 3, day: -30 }, { id: 14, label: "前90天", type: 3, day: -90 }]
+      _child: [{ id: 11, label: "昨天", type: 3, day: 0 }, { id: 12, label: "前7天", type: 3, day: -6 }, { id: 13, label: "前30天", type: 3, day: -29 }, { id: 14, label: "前90天", type: 3, day: -89 }]
     },
     {
       id: 2, label: "按月", type: 4, ot: "m"
@@ -141,7 +141,7 @@
         _it = "<div id='date_item_" + item.id + "' class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;'><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
       } else if (item.type == 2) {
         // 自定义
-        _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='width: 140px;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 15px;box-sizing: border-box;font-size: 12px;color: #999999;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span></div>";
+        _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='padding-left: 64px;width: 100%;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 15px;box-sizing: border-box;font-size: 12px;color: #999999;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span></div>";
       } else if (item.type == 4) {
         _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='width: 140px;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 25px;box-sizing: border-box;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
       }
@@ -213,7 +213,7 @@
         _it = "<div id='date_item_" + item.id + "' class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;'><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
       } else if (item.type == 2) {
         // 自定义
-        _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='width: 140px;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 15px;box-sizing: border-box;font-size: 12px;color: #999999;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span></div>";
+        _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='padding-left: 64px;width: 100%;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 15px;box-sizing: border-box;font-size: 12px;color: #999999;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span></div>";
       } else if (item.type == 4) {
         // 月份
         _it = "<div class='flex justify-between align-center item-hover' style='padding: 8px;cursor: pointer;position: relative;'><div id='date_item_" + item.id + "' style='width: 140px;position: absolute;right: 0;top: 0;height: 100%;display: flex;justify-content: flex-end;align-items: center;padding-right: 25px;box-sizing: border-box;'></div><span style='font-size: 13px;color: #333;'>" + item.label + "</span><i style='color: rgba(0,0,0,0.25);' class=\"layui-icon layui-icon-right\"></i></div>";
@@ -305,7 +305,7 @@
     let month = date.getMonth();
     let day = date.getDate();
     let start = new Date(year, month, day + _day - 1);
-    let end = new Date(year, month, day - 1);
+    let end = new Date(year, month, day - 1, 23, 59);
     $("#" + _self_id.split("__")[0]).val(start.format(dateFormat) + " ~ " + end.format(dateFormat));
     setSearchValue(start.format(dateFormat) + " ~ " + end.format(dateFormat))
   }
@@ -319,8 +319,8 @@
       $("#" + _self_id.split("__")[0]).val(year);
       setSearchValue(year);
     } else {
-      $("#" + _self_id.split("__")[0]).val(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0).format(dateFormat));
-      setSearchValue(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0).format(dateFormat));
+      $("#" + _self_id.split("__")[0]).val(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0, 23, 59).format(dateFormat));
+      setSearchValue(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0, 23, 59).format(dateFormat));
     }
   }
 
@@ -357,7 +357,9 @@
               endDate.hours = endTimeHour;
               endDate.minutes = endTimeMin;
               let valueArr = value.split(" ~ ");
-              value = (valueArr[0].split(" ")[0] + " " + ((startTimeHour < 10 ? "0" + startTimeHour : startTimeHour) + ":" + (startTimeMin < 10 ? "0" + startTimeMin : startTimeMin))) + " ~ " + (valueArr[1].split(" ")[0] + " " + ((endTimeHour < 10 ? "0" + endTimeHour : endTimeHour) + ":" + (endTimeMin < 10 ? "0" + endTimeMin : endTimeMin)))
+              let sDate = new Date(valueArr[0].split(" ")[0] + " " + ((startTimeHour < 10 ? "0" + startTimeHour : startTimeHour) + ":" + (startTimeMin < 10 ? "0" + startTimeMin : startTimeMin))).format(dateFormat);
+              let eDate = new Date(valueArr[1].split(" ")[0] + " " + ((endTimeHour < 10 ? "0" + endTimeHour : endTimeHour) + ":" + (endTimeMin < 10 ? "0" + endTimeMin : endTimeMin))).format(dateFormat);
+              value = sDate + " ~ " + eDate;
               setTimeout(function () {
                 $("#" + _self_id.split("__")[0]).val(value);
                 setSearchValue(value);
@@ -369,8 +371,10 @@
           ready: function (date) {
             setTimeout(function() {
               $(".laydate-btns-time").hide();
+              // if (dateFormat.indexOf("HH:mm") > -1) {
               $(".laydate-main-list-0 .layui-laydate-content").append("<div id='startTimeGroup' style='display: inline-flex;justify-content: flex-start;align-items: center;margin-right: 12px;'><div style='font-size: 12px;' class=''>时间</div><div id='startTime_Hour' class='kq-time-picker-input'>00</div>:<div id='startTime_Min' class='kq-time-picker-input'>00</div></div>");
-              $(".laydate-main-list-1 .layui-laydate-content").append("<div id='endTimeGroup' style='display: inline-flex;justify-content: flex-start;align-items: center;margin-right: 12px;'><div style='font-size: 12px;' class=''>时间</div><div id='endTime_Hour' class='kq-time-picker-input'>00</div>:<div id='endTime_Min' class='kq-time-picker-input'>00</div></div>");
+              $(".laydate-main-list-1 .layui-laydate-content").append("<div id='endTimeGroup' style='display: inline-flex;justify-content: flex-start;align-items: center;margin-right: 12px;'><div style='font-size: 12px;' class=''>时间</div><div id='endTime_Hour' class='kq-time-picker-input'>23</div>:<div id='endTime_Min' class='kq-time-picker-input'>59</div></div>");
+              // }
               let dateRange = $("#date_item_3").text();
               if (dateRange) {
                 let startTime_Hour = dateRange.split(" ~ ")[0].split(" ")[1].split(":")[0];
@@ -382,9 +386,25 @@
                 $("#endTime_Hour").text(endTime_Hour);
                 $("#endTime_Min").text(endTime_Min);
               }
-              $(".layui-laydate-range").prepend("<div class='picker-range-header'><div id='picker_range__startDate'>~</div></div>");
+              $(".layui-laydate-range").prepend("<div class='picker-range-header'><div id='picker_range__startDate'></div><div style='visibility: hidden;'>~</div></div>");
+              if (dateFormat.indexOf("HH") == -1) {
+                $("#startTime_Hour").addClass("hour-disabled");
+                $("#endTime_Hour").addClass("hour-disabled");
+              }else {
+                $("#startTime_Hour").removeClass("hour-disabled");
+                $("#endTime_Hour").removeClass("hour-disabled");
+              }
+              if (dateFormat.indexOf("mm") == -1) {
+                $("#startTime_Min").addClass("hour-disabled");
+                $("#endTime_Min").addClass("hour-disabled");
+              }else {
+                $("#startTime_Min").removeClass("hour-disabled");
+                $("#endTime_Min").removeClass("hour-disabled");
+              }
               $(".kq-time-picker-input").click(function () {
-                kqTimeSelect(this);
+                if (dateFormat.indexOf("HH:mm") > -1) {
+                  kqTimeSelect(this);
+                }
               })
             })
           },
@@ -396,7 +416,9 @@
             let arr = value.split(" ~ ");
             let st = sHour + ":" + sMin;
             let et = eHour + ":" + eMin;
-            value = arr[0].split(" ")[0] + " " + st + " ~ " + arr[1].split(" ")[0] + " " + et;
+            let sD = new Date(arr[0].split(" ")[0] + " " + st).format(dateFormat);
+            let eD = new Date(arr[1].split(" ")[0] + " " + et).format(dateFormat);
+            value = sD + " ~ " + eD;
             $("#picker_range__startDate").html(value);
           }
         });
@@ -482,8 +504,8 @@
       $("#" + _self_id.split("__")[0]).val(year + "-" + (month < 10 ? ("0" + month) : month));
       setSearchValue(year + " ~ " + month);
     } else {
-      $("#" + _self_id.split("__")[0]).val(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0).format(dateFormat));
-      setSearchValue(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0).format(dateFormat));
+      $("#" + _self_id.split("__")[0]).val(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0, 23, 59).format(dateFormat));
+      setSearchValue(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0, 23, 59).format(dateFormat));
     }
     $("#" + _self_id).remove();
     $("#date_bg").remove();
