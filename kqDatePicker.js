@@ -1,5 +1,5 @@
 /*!
- * v0.0.1
+ * v1.0.1
  * cqh
  * 2020-10-16
  */
@@ -305,7 +305,7 @@
     let month = date.getMonth();
     let day = date.getDate();
     let start = new Date(year, month, day + _day - 1);
-    let end = new Date(year, month, day - 1, 23, 59);
+    let end = new Date(year, month, day - 1);
     $("#" + _self_id.split("__")[0]).val(start.format(dateFormat) + " ~ " + end.format(dateFormat));
     setSearchValue(start.format(dateFormat) + " ~ " + end.format(dateFormat))
   }
@@ -319,8 +319,8 @@
       $("#" + _self_id.split("__")[0]).val(year);
       setSearchValue(year);
     } else {
-      $("#" + _self_id.split("__")[0]).val(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0, 23, 59).format(dateFormat));
-      setSearchValue(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0, 23, 59).format(dateFormat));
+      $("#" + _self_id.split("__")[0]).val(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0).format(dateFormat));
+      setSearchValue(new Date(year, 0, 1).format(dateFormat) + " ~ " + new Date(parseInt(year) + 1, 0, 0).format(dateFormat));
     }
   }
 
@@ -504,8 +504,8 @@
       $("#" + _self_id.split("__")[0]).val(year + "-" + (month < 10 ? ("0" + month) : month));
       setSearchValue(year + " ~ " + month);
     } else {
-      $("#" + _self_id.split("__")[0]).val(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0, 23, 59).format(dateFormat));
-      setSearchValue(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0, 23, 59).format(dateFormat));
+      $("#" + _self_id.split("__")[0]).val(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0).format(dateFormat));
+      setSearchValue(new Date(year, month - 1, 1).format(dateFormat) + " ~ " + new Date(year, month, 0).format(dateFormat));
     }
     $("#" + _self_id).remove();
     $("#date_bg").remove();
